@@ -15,7 +15,7 @@ This project is an example of a LangChain agent for task management. The agent c
     ```
 4. Run the FastAPI server:
     ```
-    uvicorn main:app --reload
+    uvicorn app.main:app --reload
     ```
 
 ## Usage
