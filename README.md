@@ -15,7 +15,7 @@ This project is an example of a LangChain agent for task management. The agent c
     ```
 4. Run the FastAPI server:
     ```
-    uvicorn app.main:app --reload
+    uvicorn main:app --reload
     ```
 
 ## Usage
@@ -43,14 +43,22 @@ To add a new task, you can send:
 curl -X POST "http://localhost:8000/chat" -H "Content-Type: application/json" -d '{"text": "I need to buy bread tomorrow"}'
 ```
 
-The agent's response will be returned in JSON format.
+The agent will invoke a function that will create the task and return a response like this:
 
 ```json
 {
   "status": "success",
   "operation": "add",
-  "task_description": "I need to buy bread tomorrow",
+  "task_description": "buy bread",
   "due_date": "2024-07-15"
+}
+```
+
+The agent will then return a natural language response to the user, such as:
+
+```json
+{
+  "response": "I have added your task to buy bread tomorrow. If there is anything else I can help with, please let me know."
 }
 ```
 
@@ -80,4 +88,4 @@ And to delete a task, you can send:
 }
 ```
 
-The agent will process the request and return the appropriate response.
+The agent will process the request and return the appropriate response in natural language.
